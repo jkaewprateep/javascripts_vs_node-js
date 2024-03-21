@@ -1,5 +1,10 @@
-# Similarity and differentiate of JavaScript and Node.js with Django on node.js ( JavaScript-Programming-Essentials )
-Similarity and differentiate of JavaScript and Node.js with Django on node.js
+# Similarity and differentiation of JavaScript and Node.js with Django on node.js ( JavaScript-Programming-Essentials )
+Similarity and differentiation of JavaScript and Node.js with Django on node.js
+
+## 🧸💬 Data and data communication path for read, write, and update of data record 
+
+🐑💬 ➰ We create data class in the data module for managing data connection, data activities, database and dataset definitions, and database authentication validation. </br>
+
 
 ### Javascript constant struct 
 
