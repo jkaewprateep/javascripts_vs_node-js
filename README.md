@@ -50,6 +50,7 @@ class IEntiryDriver(models.Model):
 ### MongoDB 🥭 in database connection - sample find collection and client connectivity
 
 🐑💬 ➰ Database connections and memory management for the database are handled under COM level but for the database driver wrapper they are managed on top of the natural database driver make sure you set the right permissions and correct versions and OS management for the database connection. In some cases, they are possible to connect but there are some message displays between the query result because of no backward compatibility software requirements and the machine cannot map output for the command. </br>
+🐐💬 There is no native MongoDB connectivity in the Django data module but there are Oracle and SQL you had replaced the data communication path with the update codes to communicate with MongoDB. I saw of these requirements on the Internet and they are discussion about database debugging messages and operations. </br>
 
 ```
 def Find_mongoDBconnection(CollectionName, pipeline):
