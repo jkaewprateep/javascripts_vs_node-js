@@ -95,10 +95,12 @@ function displayEmployees(){
 
 ### Read and respond to web object from the data module classes ( Python 🐍 )
 
+👧💬 🎈 Data model data management, codings management serails by step to process success. </br> 
+
 ```
-def add_neworder(request):
+def add_neworder(request):                                                              # 🧸💬 Define definition
     
-    customer_id = 1
+    customer_id = 1                                                                     # 🧸💬 Define local variables
     driver_id = 1
     customer_name = "DekDee"
     order_name = "rice"
@@ -106,21 +108,21 @@ def add_neworder(request):
     description = "discription"
     order_time = timezone.now()
     run_status = 0
-    max_status = create_random(10, 60, 1)
+    max_status = create_random(10, 60, 1)                                               # 🧸💬 Create random for padding data
     
     ####################################################################
     # Pre-requisites must have order name and order amount
     ####################################################################
-    if request.method == 'POST':
-        customer_id = request.POST.get("customer_id", "")
+    if request.method == 'POST':                                                        # 🧸💬 Handling POST method
+        customer_id = request.POST.get("customer_id", "")                               # 🧸💬 Store web query values into local variables
         order_name = request.POST.get("order_name", "invalid_ordername")
         amount = request.POST.get("amount", 0)
         description = request.POST.get("description", "discription")
         run_status = request.POST.get("run_status", 0)
         max_status = request.POST.get("max_status", create_random(10, 60, 1))
         
-    elif request.method == 'GET':
-        customer_id = request.GET.get("customer_id", "")
+    elif request.method == 'GET':                                                       # 🧸💬 Handling GET method
+        customer_id = request.GET.get("customer_id", "")                                # 🧸💬 Store web query values into local variables
         order_name = request.GET.get("order_name", "invalid_ordername")
         amount = request.GET.get("amount", 0)
         description = request.GET.get("description", "discription")
@@ -128,21 +130,21 @@ def add_neworder(request):
         max_status = request.POST.get("max_status", create_random(10, 60, 1))
         
     else:
-        data = create_jsonmessegereturn("request not specific method", "error")
+        data = create_jsonmessegereturn("request not specific method", "error")         # 🧸💬 Error handlings
         return HttpResponse(data)
     
     if order_name == "invalid_ordername" or amount == 0:
-        data = create_jsonmessegereturn("invalid order name or order amount", "error")
+        data = create_jsonmessegereturn("invalid order name or order amount", "error")  # 🧸💬 Error handlings
         return HttpResponse(data)
     
     ####################################################################
     # 0. Find avaialble customer
     ####################################################################    
     # Aggregate function
-    pipeline = [{ "$match": { "_id": str(customer_id) }},
+    pipeline = [{ "$match": { "_id": str(customer_id) }},                               # 🧸💬 MongoDB query pipeline
                 {"$sort": SON([("_id", -1)])}]
     
-    customers_resultset = Agr_mongoDBconnection('customers', pipeline)
+    customers_resultset = Agr_mongoDBconnection('customers', pipeline)                  # 🧸💬 MongoDB aggregate function from database module
     
     if len(customers_resultset) < 1 :
     
@@ -150,7 +152,7 @@ def add_neworder(request):
         # 0.1 If not found customer create new one
         ####################################################################
         
-        new_customer = {
+        new_customer = {                                                                # 🧸💬 MongoDB query pipeline
             # "customer_id": customer_id,
             "customer_name": customer_name,
             "firstname": driver_id,
@@ -159,24 +161,24 @@ def add_neworder(request):
             "description": description
         }
         
-        customers_resultset = Insert_mongoDBconnection('customers', new_customer)
+        customers_resultset = Insert_mongoDBconnection('customers', new_customer)       # 🧸💬 MongoDB insert function from database module
     
     ####################################################################
     # 0.2 Find avaialble ordername
     ####################################################################
     # Aggregate function
-    pipeline = [{ "$match": { "ordername": str(order_name) }},
+    pipeline = [{ "$match": { "ordername": str(order_name) }},                          # 🧸💬 MongoDB query pipeline
                 {"$sort": SON([("_id", -1)])},{"$limit": 1 }]
 
-    orderitems_resultset = Agr_mongoDBconnection('IOrderItems', pipeline)  
+    orderitems_resultset = Agr_mongoDBconnection('IOrderItems', pipeline)               # 🧸💬 MongoDB aggregate function from database module
     
-    if len(orderitems_resultset) > 0:
+    if len(orderitems_resultset) > 0:                                                   # 🧸💬 Error handling, first() select first if duplicated.
         orderitems_resultset = orderitems_resultset[0]
     
     ####################################################################
     # 0.3 If order name not available
     ####################################################################
-    if len(orderitems_resultset) < 1:
+    if len(orderitems_resultset) < 1:                                                   # 🧸💬 Error handling, web response
         data = create_jsonmessegereturn("ordername not available", "error")
         return HttpResponse(data)
     
@@ -184,12 +186,12 @@ def add_neworder(request):
     # 1. Find available driver into avaliable_id
     ####################################################################
     # Aggregate function
-    pipeline = [{ "$match": { "status": "Available" } },
+    pipeline = [{ "$match": { "status": "Available" } },                                # 🧸💬 MongoDB query pipeline
                 {"$sort": SON([("run_status", -1)])},{"$limit": 3 }]
 
-    resultset = Agr_mongoDBconnection('drivers', pipeline)
+    resultset = Agr_mongoDBconnection('drivers', pipeline)                              # 🧸💬 MongoDB aggregate function from database module
     
-    customer_id = customers_resultset["_id"]
+    customer_id = customers_resultset["_id"]                                            # 🧸💬 Local variable calculation
     customer_name = customers_resultset["customer_name"]
     order_name = orderitems_resultset["ordername"]
     description = "discription"
@@ -206,14 +208,14 @@ def add_neworder(request):
     ####################################################################
     # 2. Create Order
     ####################################################################    
-    # ICustomer.id = 1234
+    # ICustomer.id = 1234                                                               # 🧸💬 Local variable calculation
     # ICustomer.firstname = "Jirayu"
     # ICustomer.lastname = "Kaewprateep"
     
     ####################################################################
     # 2.1 Assign customer Id and Avalable driver Id
     ####################################################################
-    if len(drivers_avaliable_id) > 0:
+    if len(drivers_avaliable_id) > 0:                                                   # 🧸💬 Local variable calculation
         customer_id = customers_resultset["_id"]
         driver_id = drivers_avaliable_id[0]
         customer_name = customers_resultset["customer_name"]
@@ -230,7 +232,7 @@ def add_neworder(request):
         order_name = orderitems_resultset["ordername"]
         description = "discription"
     
-    new_order = {
+    new_order = {                                                                       # 🧸💬 MongoDB query pipeline
         "customer_id": customer_id,
         "customer_name": customer_name,
         "driver_id": driver_id,
@@ -243,14 +245,14 @@ def add_neworder(request):
     }
     ###
     
-    result_findinsertid = Insert_mongoDBconnection("order", new_order)
+    result_findinsertid = Insert_mongoDBconnection("order", new_order)                  # 🧸💬 MongoDB insert function from database module
     
     print("************************************")
     print(result_findinsertid)
     print("************************************")
     
     data = create_dictitemsfromreturnretulst(result_findinsertid)
-    json_data = json.dumps(data)
+    json_data = json.dumps(data)                                                        # 🧸💬 Create response message
     ###
     
     return HttpResponse(json_data)
