@@ -11,7 +11,9 @@ Similarity and differentiation of JavaScript and Node.js with Django on node.js
 ### Javascripts constant struct ✳️
 
 🐐💬 A simple constant variable for a data array contains the data record, access, and reference over the javascripts and memory. </br>
-🦁💬 Define a class or class module is save because it cannot see directly from the codes or debugging when communication over networks Internet it encrypted with session ID as default. </br>
+🦁💬 Define a class or class module that is saved because it cannot see directly from the codes or debugging when communication over networks Internet is encrypted with session ID as default. </br>
+💃( 👩‍🏫 )💬 How to reuse cookies 🍪 from clients for only none business data and use online business data without updating or storing data on the current local machine ⁉️ </br>
+🦤💬 Session data is copied and protected by default session data communication mechanisms but it can be protected by the method of communications, secured variables, and flag settings for cookies and local accessibility. </br>
 
 ```
 const employees = [
