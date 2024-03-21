@@ -30,7 +30,7 @@ class IEntiryDriver(models.Model):
         return self._id
 ```
 
-### MongoDB in database connection - sample find collection and client connectivity
+### MongoDB 🥭 in database connection - sample find collection and client connectivity
 
 ```
 def Find_mongoDBconnection(CollectionName, pipeline):
