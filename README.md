@@ -81,7 +81,8 @@ def Find_mongoDBconnection(CollectionName, pipeline):
 
 ###  Read and respond to HTML document object from the value from data struct ✳️
 
-👧💬 🎈 In some applications communication messages need to constructed as structs with templates that is because of debugging and validate of the method and work tracing backlog of the application features. </br>
+👧💬 🎈 In some applications communication messages need to constructed as structs with templates that is because of debugging and validation of the method and work tracing backlog of the application features. </br>
+🏝️☃️💬 There is a label on the message the same as the sender from the letter or shipyard message in the bottle, store and categorize the data you need to prepare them in a state that they are easy to manage. </br>   
 
 ```
 function displayEmployees(){
