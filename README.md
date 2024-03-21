@@ -233,3 +233,55 @@ def add_neworder(request):
     
     return HttpResponse(json_data)
 ```
+
+### Section client for communication with HTML events
+
+```
+// TEMPORARY PLACEHOLDER DATA
+const url = "https://localhost:8000/retreive_ordersTOPN/";
+
+async function getData(index: Int32) {
+
+  const res = await fetch(url + "?number=2",
+  {
+    method: 'GET',
+    headers: {
+      "Host": "https://127.0.0.1:3000/",
+      'content-type': 'application/json',
+      "User-Agent": "PostmanRuntime/7.36.1",
+      "Accept": "*/*",
+    },
+    })
+
+    if (!res.ok) {
+      return [0, 0, 50];
+    }
+
+  const data = await res.json();
+
+  try {
+    const run_status = Number(data[index].run_status)
+    const max_status = Number(data[index].max_status)
+    const order_id = String(data[index]._id)
+    console.log(order_id)
+    console.log(run_status)
+    console.log(max_status)
+    return [order_id, run_status, max_status];
+
+  } catch (error) {
+      const run_status = 0
+      const max_status = 100
+      const order_id = "0000000000000"
+      console.log(order_id)
+      console.log(run_status)
+      console.log(max_status)
+      return [order_id, run_status, max_status];
+  }
+};
+
+const getMockStatusConfigByIndex = async (index: number) => {
+
+  const [order_id, run_status, max_status] = await getData( index )
+  return [order_id, run_status, max_status];
+};
+```
