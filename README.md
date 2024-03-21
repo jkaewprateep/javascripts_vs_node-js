@@ -260,6 +260,8 @@ def add_neworder(request):                                                      
 
 ### Section client for communication with HTML events ❇️ react.js
 
+🐐💬 React.js is a security version of javascript because it allows of some methods to be performed on the client side then all of the data needs to be verified and worked on the server side only setting and small configuration on the client side. </br>
+
 ```
 // TEMPORARY PLACEHOLDER DATA
 const url = "https://localhost:8000/retreive_ordersTOPN/";
