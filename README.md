@@ -27,7 +27,8 @@ const employees = [
 
 ### Data class model in Django - by the instruction ( Python 🐍 )
 
-🐑💬 ➰ Define data model in data module, update of data fields and data foreign keys and objects can be synchronized by the ```migrate command `` . </br>
+🐑💬 ➰ Define data model in data module, update of data fields and data foreign keys and objects can be synchronized by the ```migrate command ``` . </br>
+🐨🎁🎵🎶 The data model helps manage communication methods the same as the dataset and data set configuration in C#.net applications, you can update the dataset file and reload the application, and in the Django multi-programming languages platforms, you can migrate or update their attributes. </br>
 
 ```
 class IEntiryDriver(models.Model):
