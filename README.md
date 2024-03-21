@@ -286,9 +286,24 @@ const getMockStatusConfigByIndex = async (index: number) => {
 };
 ```
 
-### Data rendering
+### Data Rendering - javaScripts Server-Client
 
 ```
 renderItem={async (driver, index) => {
     const [driver_id, percentComplete, numSteps] = await getMockStatusConfigByIndex(index);
+```
+
+### Data Rendering - javaScripts HTML
+
+```
+function findEmployeeById(employeeId) {
+    const foundEmployee = employees.find(employee => employee.id === employeeId);
+    if (foundEmployee) {
+        document.getElementById('employeesDetails').innerHTML =`<p>${foundEmployee.id}: ${foundEmployee.name}: ${foundEmployee.name} - ${foundEmployee.department} - ${foundEmployee.salary} - ${foundEmployee.specialization}</p>`;
+    }
+    else{
+        document.getElementById('employeesDetails').innerHTML = 'no employee has been found with this ID';
+
+    }
+}
 ```
