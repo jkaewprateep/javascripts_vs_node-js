@@ -314,12 +314,16 @@ const getMockStatusConfigByIndex = async (index: number) => {                   
 
 ### Data Rendering - react.js Server-Client ❇️
 
+👧💬 🎈 Data rendering is as simple as calling the document object Id and assigning appropriate value as javascripts do. </br>
+
 ```
 renderItem={async (driver, index) => {
-    const [driver_id, percentComplete, numSteps] = await getMockStatusConfigByIndex(index);
+    const [driver_id, percentComplete, numSteps] = await getMockStatusConfigByIndex(index); ... }
 ```
 
 ### Data Rendering - javaScripts HTML ✳️
+
+👧💬 🎈 Data rendering is as by document object Id and assigning appropriate value. </br>
 
 ```
 function findEmployeeById(employeeId) {
@@ -338,8 +342,10 @@ function findEmployeeById(employeeId) {
 
 ### Event - listeners C#.net 🎸
 
+👧💬 🎈 Sample in C#.net application. </br>
+
 ```
-constructor(props) {
+constructor(props) {                                                                                # 🧸💬 Create struct for communication
     super(props);
     this.state = { username: "", name: "", lastname : "", department: "", email: "", password: "",
                     ck_register: false, currentCount: 0, errors: "", fetched_data: [], submit_btn: "Submit" };
@@ -355,11 +361,11 @@ constructor(props) {
     this.handleRegisterCKClick = this.handleRegisterCKClick.bind(this);
 }
 
-Login_verification( ) {
+Login_verification( ) {                                                                              # 🧸💬 Call class data model
     this.populateUserData(this.state.username, this.state.password);
 }
 
-Add_employeedata() {
+Add_employeedata() {                                                                                 # 🧸💬 Call class data model
     this.AddEmployeeData(this.state.username, this.state.name, this.state.lastname, this.state.department,
         this.state.password, this.state.email);
 }
