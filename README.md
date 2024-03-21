@@ -285,3 +285,10 @@ const getMockStatusConfigByIndex = async (index: number) => {
   return [order_id, run_status, max_status];
 };
 ```
+
+### Data rendering
+
+```
+renderItem={async (driver, index) => {
+    const [driver_id, percentComplete, numSteps] = await getMockStatusConfigByIndex(index);
+```
