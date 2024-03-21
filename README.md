@@ -264,11 +264,11 @@ def add_neworder(request):                                                      
 
 ```
 // TEMPORARY PLACEHOLDER DATA
-const url = "https://localhost:8000/retreive_ordersTOPN/";
+const url = "https://localhost:8000/retreive_ordersTOPN/";                              # 🐑💬 ➰ Communication url for communication data services.
 
-async function getData(index: Int32) {
+async function getData(index: Int32) {                                                  # 🐑💬 ➰ Async data communications
 
-  const res = await fetch(url + "?number=2",
+  const res = await fetch(url + "?number=2",                                            # 🐑💬 ➰ Communication message, fetch method possible and we are running on secured HTTP
   {
     method: 'GET',
     headers: {
@@ -279,13 +279,13 @@ async function getData(index: Int32) {
     },
     })
 
-    if (!res.ok) {
+    if (!res.ok) {                                                                      # 🐑💬 ➰ Error handling
       return [0, 0, 50];
     }
 
-  const data = await res.json();
+  const data = await res.json();                                                        # 🐑💬 ➰ Read some response
 
-  try {
+  try {                                                                                 # 🐑💬 ➰ Store data into local variables and log for debugging
     const run_status = Number(data[index].run_status)
     const max_status = Number(data[index].max_status)
     const order_id = String(data[index]._id)
@@ -305,7 +305,7 @@ async function getData(index: Int32) {
   }
 };
 
-const getMockStatusConfigByIndex = async (index: number) => {
+const getMockStatusConfigByIndex = async (index: number) => {                          # 🐑💬 ➰ Async method to display on web
 
   const [order_id, run_status, max_status] = await getData( index )
   return [order_id, run_status, max_status];
