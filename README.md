@@ -13,6 +13,7 @@ const employees = [
 ```
 
 ### Data class model in Django - by the instruction
+
 ```
 class IEntiryDriver(models.Model):
     _id = models.PositiveIntegerField(primary_key=True, validators=[MaxValueValidator(9999999999)])
@@ -27,4 +28,26 @@ class IEntiryDriver(models.Model):
     
     def __str__(self):
         return self._id
+```
+
+### MongoDB in database connection - sample find collection and client connectivity
+
+```
+def Find_mongoDBconnection(CollectionName, pipeline):
+    # Set the Stable API version when creating a new client
+    client = MongoClient(uri, server_api=ServerApi('1'), connectTimeoutMS=3000, socketTimeoutMS=3000, maxPoolSize=50)
+    
+    # Define DB Name
+    dbname = client['admin']
+    
+    # Define Collection
+    collection = dbname[CollectionName]
+    
+    try:
+        result = list(collection.find(pipeline))
+        
+    except PyMongoError as e:
+        print(f"Database operation failed: {e}")
+    
+    return result
 ```
