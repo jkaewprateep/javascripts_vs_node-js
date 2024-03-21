@@ -10,6 +10,9 @@ Similarity and differentiation of JavaScript and Node.js with Django on node.js
 
 ### Javascripts constant struct ✳️
 
+🐐💬 A simple constant variable for a data array contains the data record, access, and reference over the javascripts and memory. </br>
+🦁💬 Define a class or class module is save because it cannot see directly from the codes or debugging when communication over networks Internet it encrypted with session ID as default. </br>
+
 ```
 const employees = [
     { id: 1, name: ' 🧸💬  John Doe', age: 30, department: 'IT', salary: 50000, specialization: " 👧💬 🎈  Javascript" },
