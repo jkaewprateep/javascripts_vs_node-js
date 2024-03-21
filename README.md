@@ -29,6 +29,7 @@ const employees = [
 
 ```
 class IEntiryDriver(models.Model):
+    # 🧸💬 Define data fields
     _id = models.PositiveIntegerField(primary_key=True, validators=[MaxValueValidator(9999999999)])
     _TGOid = models.PositiveIntegerField(primary_key=False, validators=[MaxValueValidator(9999999999)])
     _IGOid = models.PositiveIntegerField(primary_key=False, validators=[MaxValueValidator(9999999999)])
@@ -39,7 +40,7 @@ class IEntiryDriver(models.Model):
     max_status = models.PositiveIntegerField(primary_key=False, validators=[MaxValueValidator(1000000000)])
     status = models.CharField(max_length=256)
     
-    def __str__(self):
+    def __str__(self):                                           # 🧸💬 Default call object reply __str__
         return self._id
 ```
 
