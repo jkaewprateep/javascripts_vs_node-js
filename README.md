@@ -3,7 +3,9 @@ Similarity and differentiation of JavaScript and Node.js with Django on node.js
 
 ## 🧸💬 Data and data communication path for read, write, and update of data record 
 
-🐑💬 ➰ We create data class in the data module for managing data connection, data activities, database and dataset definitions, and database authentication validation. </br>
+🐑💬 ➰ We create data classes in the data module for managing data connection, data activities, database and dataset definitions, and database authentication validation. </br>
+👧💬 🎈 In C#.net data adaptors automatically update queries and re-organize the selection method except update and delete, or process with ALTER. </br>
+🦭💬 When you select and download database drivers and integrations from Oracle, MS-SQL, MongoDB, or any of the database brands, it is easier to manage codes with drivers or data adaptors with database communication drivers and GUI management features. A good administrator and good developer select the correct management driver that makes it easier in development processes. </br>
 
 
 ### Javascript constant struct 
