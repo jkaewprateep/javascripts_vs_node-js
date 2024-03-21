@@ -8,7 +8,7 @@ Similarity and differentiation of JavaScript and Node.js with Django on node.js
 🦭💬 When you select and download database drivers and integrations from Oracle, MS-SQL, MongoDB, or any of the database brands, it is easier to manage codes with drivers or data adaptors with database communication drivers and GUI management features. A good administrator and good developer select the correct management driver that makes it easier in development processes. </br>
 
 
-### Javascript constant struct 
+### Javascripts constant struct 
 
 ```
 const employees = [
@@ -19,7 +19,7 @@ const employees = [
 ];
 ```
 
-### Data class model in Django - by the instruction
+### Data class model in Django - by the instruction ( Python )
 
 ```
 class IEntiryDriver(models.Model):
