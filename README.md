@@ -61,7 +61,7 @@ def Find_mongoDBconnection(CollectionName, pipeline):
 
 - - -
 
-###  Read and response to HTML document object from the value from data struct.
+###  Read and respond to HTML document object from the value from data struct.
 
 ```
 function displayEmployees(){
@@ -69,4 +69,167 @@ function displayEmployees(){
     const EmployeesDisplay = Employees.map((employee, index) => `<p>${employee.id}: ${employee.name}: ${employee.name} - ${employee.department} - $${employee.salary} - $${employee.specialization}</p>`).join('');
     document.getElementById('employeesDetails').innerHTML = EmployeesDisplay;
 }
+```
+
+### Read and respond to web object from the data module classes.
+
+```
+def add_neworder(request):
+    
+    customer_id = 1
+    driver_id = 1
+    customer_name = "DekDee"
+    order_name = "rice"
+    amount = 2
+    description = "discription"
+    order_time = timezone.now()
+    run_status = 0
+    max_status = create_random(10, 60, 1)
+    
+    ####################################################################
+    # Pre-requisites must have order name and order amount
+    ####################################################################
+    if request.method == 'POST':
+        customer_id = request.POST.get("customer_id", "")
+        order_name = request.POST.get("order_name", "invalid_ordername")
+        amount = request.POST.get("amount", 0)
+        description = request.POST.get("description", "discription")
+        run_status = request.POST.get("run_status", 0)
+        max_status = request.POST.get("max_status", create_random(10, 60, 1))
+        
+    elif request.method == 'GET':
+        customer_id = request.GET.get("customer_id", "")
+        order_name = request.GET.get("order_name", "invalid_ordername")
+        amount = request.GET.get("amount", 0)
+        description = request.GET.get("description", "discription")
+        run_status = request.POST.get("run_status", 0)
+        max_status = request.POST.get("max_status", create_random(10, 60, 1))
+        
+    else:
+        data = create_jsonmessegereturn("request not specific method", "error")
+        return HttpResponse(data)
+    
+    if order_name == "invalid_ordername" or amount == 0:
+        data = create_jsonmessegereturn("invalid order name or order amount", "error")
+        return HttpResponse(data)
+    
+    ####################################################################
+    # 0. Find avaialble customer
+    ####################################################################    
+    # Aggregate function
+    pipeline = [{ "$match": { "_id": str(customer_id) }},
+                {"$sort": SON([("_id", -1)])}]
+    
+    customers_resultset = Agr_mongoDBconnection('customers', pipeline)
+    
+    if len(customers_resultset) < 1 :
+    
+        ####################################################################
+        # 0.1 If not found customer create new one
+        ####################################################################
+        
+        new_customer = {
+            # "customer_id": customer_id,
+            "customer_name": customer_name,
+            "firstname": driver_id,
+            "lastname": order_name,
+            "name": amount,
+            "description": description
+        }
+        
+        customers_resultset = Insert_mongoDBconnection('customers', new_customer)
+    
+    ####################################################################
+    # 0.2 Find avaialble ordername
+    ####################################################################
+    # Aggregate function
+    pipeline = [{ "$match": { "ordername": str(order_name) }},
+                {"$sort": SON([("_id", -1)])},{"$limit": 1 }]
+
+    orderitems_resultset = Agr_mongoDBconnection('IOrderItems', pipeline)  
+    
+    if len(orderitems_resultset) > 0:
+        orderitems_resultset = orderitems_resultset[0]
+    
+    ####################################################################
+    # 0.3 If order name not available
+    ####################################################################
+    if len(orderitems_resultset) < 1:
+        data = create_jsonmessegereturn("ordername not available", "error")
+        return HttpResponse(data)
+    
+    ####################################################################
+    # 1. Find available driver into avaliable_id
+    ####################################################################
+    # Aggregate function
+    pipeline = [{ "$match": { "status": "Available" } },
+                {"$sort": SON([("run_status", -1)])},{"$limit": 3 }]
+
+    resultset = Agr_mongoDBconnection('drivers', pipeline)
+    
+    customer_id = customers_resultset["_id"]
+    customer_name = customers_resultset["customer_name"]
+    order_name = orderitems_resultset["ordername"]
+    description = "discription"
+    order_time = timezone.now()
+    
+    print("find availabele driver")
+    drivers_avaliable_id = []
+    for item in resultset:
+        data = create_dictitemsfromreturnretulst(item)
+        for _item in data:
+            if _item == "_id":
+                drivers_avaliable_id.append(data[_item])
+    
+    ####################################################################
+    # 2. Create Order
+    ####################################################################    
+    # ICustomer.id = 1234
+    # ICustomer.firstname = "Jirayu"
+    # ICustomer.lastname = "Kaewprateep"
+    
+    ####################################################################
+    # 2.1 Assign customer Id and Avalable driver Id
+    ####################################################################
+    if len(drivers_avaliable_id) > 0:
+        customer_id = customers_resultset["_id"]
+        driver_id = drivers_avaliable_id[0]
+        customer_name = customers_resultset["customer_name"]
+        order_name = orderitems_resultset["ordername"]
+        description = "discription"
+    
+    else:
+        ####################################################################
+        # 2.2 If there is no available driver add temp driver Id for monitor
+        ####################################################################
+        customer_id = customers_resultset["_id"]
+        driver_id = "temp_drivers"
+        customer_name = customers_resultset["customer_name"]
+        order_name = orderitems_resultset["ordername"]
+        description = "discription"
+    
+    new_order = {
+        "customer_id": customer_id,
+        "customer_name": customer_name,
+        "driver_id": driver_id,
+        "order_name": order_name,
+        "amount": amount,
+        "description": description,
+        "run_status": run_status,
+        "max_status": max_status,
+        "order_time": order_time
+    }
+    ###
+    
+    result_findinsertid = Insert_mongoDBconnection("order", new_order)
+    
+    print("************************************")
+    print(result_findinsertid)
+    print("************************************")
+    
+    data = create_dictitemsfromreturnretulst(result_findinsertid)
+    json_data = json.dumps(data)
+    ###
+    
+    return HttpResponse(json_data)
 ```
