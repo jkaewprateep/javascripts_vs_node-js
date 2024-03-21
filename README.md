@@ -58,3 +58,15 @@ def Find_mongoDBconnection(CollectionName, pipeline):
     
     return result
 ```
+
+- - -
+
+###  Read and response to HTML document object from the value from data struct.
+
+```
+function displayEmployees(){
+    const Employees = employees;
+    const EmployeesDisplay = Employees.map((employee, index) => `<p>${employee.id}: ${employee.name}: ${employee.name} - ${employee.department} - $${employee.salary} - $${employee.specialization}</p>`).join('');
+    document.getElementById('employeesDetails').innerHTML = EmployeesDisplay;
+}
+```
