@@ -8,7 +8,7 @@ Similarity and differentiation of JavaScript and Node.js with Django on node.js
 🦭💬 When you select and download database drivers and integrations from Oracle, MS-SQL, MongoDB, or any of the database brands, it is easier to manage codes with drivers or data adaptors with database communication drivers and GUI management features. A good administrator and good developer select the correct management driver that makes it easier in development processes. </br>
 
 
-### Javascripts constant struct 
+### Javascripts constant struct ✳️
 
 ```
 const employees = [
@@ -19,7 +19,7 @@ const employees = [
 ];
 ```
 
-### Data class model in Django - by the instruction ( Python )
+### Data class model in Django - by the instruction ( Python 🐍 )
 
 ```
 class IEntiryDriver(models.Model):
@@ -61,7 +61,7 @@ def Find_mongoDBconnection(CollectionName, pipeline):
 
 - - -
 
-###  Read and respond to HTML document object from the value from data struct.
+###  Read and respond to HTML document object from the value from data struct ✳️
 
 ```
 function displayEmployees(){
@@ -71,7 +71,7 @@ function displayEmployees(){
 }
 ```
 
-### Read and respond to web object from the data module classes.
+### Read and respond to web object from the data module classes ( Python 🐍 )
 
 ```
 def add_neworder(request):
@@ -286,14 +286,14 @@ const getMockStatusConfigByIndex = async (index: number) => {
 };
 ```
 
-### Data Rendering - javaScripts Server-Client
+### Data Rendering - react.js Server-Client ❇️
 
 ```
 renderItem={async (driver, index) => {
     const [driver_id, percentComplete, numSteps] = await getMockStatusConfigByIndex(index);
 ```
 
-### Data Rendering - javaScripts HTML
+### Data Rendering - javaScripts HTML ✳️
 
 ```
 function findEmployeeById(employeeId) {
