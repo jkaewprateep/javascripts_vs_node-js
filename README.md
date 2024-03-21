@@ -27,6 +27,8 @@ const employees = [
 
 ### Data class model in Django - by the instruction ( Python 🐍 )
 
+🐑💬 ➰ Define data model in data module, update of data fields and data foreign keys and objects can be synchronized by the ```migrate command `` . </br>
+
 ```
 class IEntiryDriver(models.Model):
     # 🧸💬 Define data fields
