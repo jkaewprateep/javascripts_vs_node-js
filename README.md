@@ -83,6 +83,7 @@ def Find_mongoDBconnection(CollectionName, pipeline):
 
 👧💬 🎈 In some applications communication messages need to constructed as structs with templates that is because of debugging and validation of the method and work tracing backlog of the application features. </br>
 🏝️☃️💬 There is a label on the message the same as the sender from the letter or shipyard message in the bottle, store and categorize the data you need to prepare them in a state that they are easy to manage. </br>   
+🏝️☃️💬 This filter and query are similar to LINQ or dataset record communication features in C#.net and they are flexible to display data records and data columns with data aggregate function from the memory dataset or data model in memory without reloading needed. </br>
 
 ```
 function displayEmployees(){
