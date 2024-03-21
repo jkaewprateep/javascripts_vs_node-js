@@ -49,17 +49,22 @@ class IEntiryDriver(models.Model):
 ```
 def Find_mongoDBconnection(CollectionName, pipeline):
     # Set the Stable API version when creating a new client
+    # 🧸💬 Initiate MongoClient for MongoDB communications, timeout and maxPoolSize for connections management
     client = MongoClient(uri, server_api=ServerApi('1'), connectTimeoutMS=3000, socketTimeoutMS=3000, maxPoolSize=50)
     
     # Define DB Name
+    # 🧸💬 Define database name in MongoDB
     dbname = client['admin']
     
     # Define Collection
+    # 🧸💬 Define collection name target
     collection = dbname[CollectionName]
     
     try:
+        # 🧸💬 List collection from collection name called pipeline, MongoDB query string
         result = list(collection.find(pipeline))
-        
+
+    # 🧸💬 Exception for printing    
     except PyMongoError as e:
         print(f"Database operation failed: {e}")
     
