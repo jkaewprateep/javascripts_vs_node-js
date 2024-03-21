@@ -234,7 +234,7 @@ def add_neworder(request):
     return HttpResponse(json_data)
 ```
 
-### Section client for communication with HTML events
+### Section client for communication with HTML events ❇️ react.js
 
 ```
 // TEMPORARY PLACEHOLDER DATA
