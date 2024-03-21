@@ -322,3 +322,34 @@ function findEmployeeById(employeeId) {
     }
 }
 ```
+
+- - -
+
+### Event - listeners C#.net 🎸
+
+```
+constructor(props) {
+    super(props);
+    this.state = { username: "", name: "", lastname : "", department: "", email: "", password: "",
+                    ck_register: false, currentCount: 0, errors: "", fetched_data: [], submit_btn: "Submit" };
+
+    this.password_handleChange = this.password_handleChange.bind(this);
+    this.username_handleChange = this.username_handleChange.bind(this);
+    this.email_handleChange = this.email_handleChange.bind(this);
+    this.name_handleChange = this.name_handleChange.bind(this);
+    this.lastname_handleChange = this.lastname_handleChange.bind(this);
+    this.department_handleChange = this.department_handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    /*this.handleRegisterClick = this.handleRegisterClick.bind(this);*/
+    this.handleRegisterCKClick = this.handleRegisterCKClick.bind(this);
+}
+
+Login_verification( ) {
+    this.populateUserData(this.state.username, this.state.password);
+}
+
+Add_employeedata() {
+    this.AddEmployeeData(this.state.username, this.state.name, this.state.lastname, this.state.department,
+        this.state.password, this.state.email);
+}
+```
