@@ -81,6 +81,8 @@ def Find_mongoDBconnection(CollectionName, pipeline):
 
 ###  Read and respond to HTML document object from the value from data struct ✳️
 
+👧💬 🎈 In some applications communication messages need to constructed as structs with templates that is because of debugging and validate of the method and work tracing backlog of the application features. </br>
+
 ```
 function displayEmployees(){
     const Employees = employees;
